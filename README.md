@@ -81,14 +81,19 @@ Para simplificar a interação com o ambiente Docker, foi criado um `Makefile` q
     POSTGRES_NON_ROOT_PASSWORD=n8npass
     ```
 
-3.  **Execute o Deploy com um Único Comando**
+3. **Instale as dependências necessárias para os testes unitários**  
+   O projeto utiliza o framework [Jest](https://jestjs.io/) para testes unitários, com suporte para TypeScript. Para configurar o ambiente de testes, execute o seguinte comando:
+
+   ```bash
+   npm install --save-dev jest ts-jest @types/jest
+4.  **Execute o Deploy com um Único Comando**
     O `Makefile` cuidará de tudo para você.
     ```bash
     make deploy
     ```
     Este comando irá compilar o projeto, iniciar os containers, copiar o conector customizado e reiniciar o n8n.
 
-4.  **Acesse o n8n**
+5.  **Acesse o n8n**
     Após a conclusão do deploy, acesse o n8n em seu navegador: [http://localhost:5678](http://localhost:5678).
 
 ## Testes Unitários
