@@ -119,5 +119,3 @@ Depois de executar o `make deploy`, o conector "Random" estará disponível na s
 3.  Pesquise por "Random" e selecione-o.
 4.  No painel de configuração do node, preencha os campos "Min" e "Max" com os valores desejados.
 5.  Execute o node para ver o número aleatório gerado como resultado.
-
-`![Como usar o node Random no n8n](./assets/images/random-node-demo.gif)`
