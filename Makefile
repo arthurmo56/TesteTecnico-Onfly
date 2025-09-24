@@ -9,6 +9,7 @@ N8N_CUSTOM_DIR = /home/node/.n8n/custom
 # Comando principal que executa todo o processo
 deploy: build start-db setup-custom restart-n8n
 	@echo "Deployment completo!"
+	@echo "Acesse o n8n em http://localhost:5678"
 
 # Compila o código TypeScript
 build:
