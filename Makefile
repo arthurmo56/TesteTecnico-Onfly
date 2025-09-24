@@ -21,7 +21,11 @@ start-db:
 	@echo "Subindo os serviços do Docker Compose..."
 	$(DOCKER_COMPOSE) up -d
 	@echo "Aguardando serviços ficarem prontos..."
-	@if [ "$$(uname)" = "Linux" ]; then sleep 10; else timeout /t 15 /nobreak > nul; fi
+ifeq ($(OS),Windows_NT)
+	@timeout /t 15 /nobreak > nul
+else
+	@sleep 15
+endif
 
 # Verifica se a pasta custom existe, cria se necessário e copia os arquivos
 setup-custom:
@@ -37,7 +41,11 @@ restart-n8n:
 	@echo "Reiniciando container n8n para carregar custom nodes..."
 	$(DOCKER_COMPOSE) restart n8n
 	@echo "Aguardando n8n reiniciar..."
-	@if [ "$$(uname)" = "Linux" ]; then sleep 10; else timeout /t 15 /nobreak > nul; fi
+ifeq ($(OS),Windows_NT)
+	@timeout /t 15 /nobreak > nul
+else
+	@sleep 15
+endif
 	@echo "Verificando se n8n está rodando..."
 	@docker exec $(N8N_CONTAINER) sh -c "ps aux | grep n8n"
 
