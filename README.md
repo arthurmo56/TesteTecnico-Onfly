@@ -55,11 +55,14 @@ Para simplificar a interação com o ambiente Docker, foi criado um `Makefile` q
 - **Tratamento de Erros:** O node possui validações internas, como verificar se o valor `Min` não é maior que o `Max`, retornando um erro claro para o usuário caso a condição não seja atendida.
 - **Sem Credenciais:** A integração utiliza um endpoint público da API da Random.org que não requer autenticação. Portanto, este conector não necessita de configuração de credenciais, simplificando seu uso.
 
-## Pré-requisitos
+### Pré-requisitos
 
 - [Docker](https://www.docker.com/get-started)
 - [Docker Compose](https://docs.docker.com/compose/install/)
 - [Node.js](https://nodejs.org/) (v22 ou superior) e npm
+- [TypeScript](https://www.typescriptlang.org/)
+
+> **Nota:** Certifique-se de que o Docker Compose está instalado corretamente e que você tem permissão para executar comandos do Docker. No Linux, pode ser necessário executar os comandos com `sudo`.
 
 ## Como Executar o Projeto
 

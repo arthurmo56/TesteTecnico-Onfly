@@ -1,7 +1,7 @@
 .PHONY: build copy-dist start-db setup-custom deploy clean restart-n8n
 
 # Variáveis
-DOCKER_COMPOSE = docker-compose
+DOCKER_COMPOSE = docker compose
 N8N_CONTAINER = testetecnico-onfly-n8n-1
 DIST_DIR = ./dist
 N8N_CUSTOM_DIR = /home/node/.n8n/custom
@@ -21,8 +21,7 @@ start-db:
 	@echo "Subindo os serviços do Docker Compose..."
 	$(DOCKER_COMPOSE) up -d
 	@echo "Aguardando serviços ficarem prontos..."
-	@timeout /t 15 /nobreak > nul
-
+	@if [ "$$(uname)" = "Linux" ]; then sleep 10; else timeout /t 15 /nobreak > nul; fi
 
 # Verifica se a pasta custom existe, cria se necessário e copia os arquivos
 setup-custom:
@@ -38,7 +37,7 @@ restart-n8n:
 	@echo "Reiniciando container n8n para carregar custom nodes..."
 	$(DOCKER_COMPOSE) restart n8n
 	@echo "Aguardando n8n reiniciar..."
-	@timeout /t 10 /nobreak > nul
+	@if [ "$$(uname)" = "Linux" ]; then sleep 10; else timeout /t 15 /nobreak > nul; fi
 	@echo "Verificando se n8n está rodando..."
 	@docker exec $(N8N_CONTAINER) sh -c "ps aux | grep n8n"
 
